@@ -1,0 +1,15 @@
+Generar
+Pin: este es de 10 digitos (numerico y unico)
+	Excepciones:
+		- Que exista
+		- Que coincida el monto
+		- Vigencia de 72 horas
+		- 
+	Codigo 00 Aprobado
+
+
+Reverso: 
+	- Que exista
+	- Coincida el monto
+	- No tiene vigencia
+
