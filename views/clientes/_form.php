@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-6">
-            <?= $form->field($model, 'telefonos')->textInput(['maxlength' => true]) ?> <!--Prueba git>
+            <?= $form->field($model, 'telefonos')->textInput(['maxlength' => true]) ?> <!--Prueba git-->
             <?= $form->field($model, 'direccion')->textarea(['rows' => 4]) ?>
             <?= $form->field($model, 'idioma')->dropDownList([ 'Español' => 'Español', 'Inglés' => 'Inglés', ], ['prompt' => '']) ?>
         </div>
