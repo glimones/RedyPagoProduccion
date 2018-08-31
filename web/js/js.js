@@ -13,7 +13,6 @@ $(document).ready(function(){
 
 
     $(document).on('click', '.btn-group', function() {
-        alert('ingresamos');
         if ((screen.width<1024)&&(preguntaCreate!='S')) {
             $("table thead").attr('style','visibility:hidden');
            // $("#ExteriorResponsive").show();
@@ -53,7 +52,7 @@ $(document).ready(function(){
         aux.select();
         document.execCommand("copy");
         document.body.removeChild(aux);
-        copiar(this.name);
+        copiar('S');
         $.ajax({ url: base_url+"/ajax/alertcopiaurl2"});
     }
     );
@@ -67,7 +66,7 @@ $(document).ready(function(){
         aux.select();
         document.execCommand("copy");
         document.body.removeChild(aux);
-        copiar(this.name);
+        copiar('N');
         $.ajax({ url: base_url+"/ajax/alertcopiaurl"});
         });
 
@@ -300,24 +299,23 @@ $(document).ready(function(){
         calcularMontosIva();
     });
 
-     function copiar(elementId) {
-        var input = document.getElementById(elementId);
-        var isiOSDevice = navigator.userAgent.match(/ipad|iphone/i);
-        if (isiOSDevice) {
-            var editable = input.contentEditable;
-            var readOnly = input.readOnly;
-            input.contentEditable = true;
-            input.readOnly = false;
-            var range = document.createRange();
-            range.selectNodeContents(input);
-            var selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            input.setSelectionRange(0, 999999);
-            input.contentEditable = editable;
-            input.readOnly = readOnly;
-        }
-        document.execCommand('copy');
+     function copiar(valor) {
+         if (valor=='S'){
+             var emailLink = document.querySelector('.boton');
+         }else{
+             var emailLink = document.querySelector('.boton1');
+         }
+         var range = document.createRange();
+         range.selectNode(emailLink);
+         window.getSelection().addRange(range);
+         try {
+             var successful = document.execCommand('copy');
+             var msg = successful ? 'successful' : 'unsuccessful';
+             //alert('Copy email command was ' + msg);
+         } catch(err) {
+             //alert('Oops, unable to copy');
+         }
+         window.getSelection().removeAllRanges();
     }
 
     /*$(".boton").click(function() {
